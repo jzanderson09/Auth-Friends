@@ -1,15 +1,22 @@
 import React from 'react';
 import './App.css';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 // Components:
+import Navigation from './components/Navigation';
 import Login from './components/Login';
+import ProtectedRoute from './components/ProtectedRoute';
+import FriendsList from './components/FriendsList';
 
 function App() {
   return (
     <div className="App">
       <h1>App!</h1>
-      <Route exact path='/' component={Login}/>
+      <Navigation />
+      <Switch>
+          <Route path='/login' component={Login} />
+          <ProtectedRoute exact path='/friends' component={FriendsList} />
+      </Switch>
     </div>
   );
 }
